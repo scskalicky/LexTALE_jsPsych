@@ -1,4 +1,6 @@
-# lexTALE_jsPsych
+# LexTALE working in JsPsych v7.+
+
+[Preview the script](https://8uwryy9nj0.cognition.run)
 
 Sharing my conversion of the [LexTALE test](www.lextale.com) to work with version7.+ of [jsPsych](https://www.jspsych.org/7.0/).
 
@@ -6,6 +8,6 @@ The look + feel of the script is similar to the test as displayed on www.lextale
 
 The final score is stored in the jsPsych data as `lextale_score`
 
-[Preview a demo](https://8uwryy9nj0.cognition.run)
+
 
 
