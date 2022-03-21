@@ -13,9 +13,10 @@
 	<script>
 		const jsPsych = initJsPsych({
 			on_finish: function(data){
-			// total accuracy
+			// calculate final LexTALE accuracy and save to data
 			var lextale_score = ((rw_score / 40*100) + (nw_score / 20 * 100))  / 2;
 			jsPsych.data.addProperties({lextale_score: lextale_score});
+			// remove this when you deploy (unless you want subjects to see the output!)
 			jsPsych.data.displayData();
 			}
 		});
@@ -27,10 +28,11 @@
 	/* create experiment timeline */  
 	var timeline = [];
 
-	// real word and non word tallies
+	// initialise vars to store real word and non word tallies
 	var rw_score = 0;
 	var nw_score = 0;
 
+	// I've split the instructions across the screen and added a title, otherwise they should be the same as www.lextale.com
 	var instructions_lextale = {
 		type: jsPsychInstructions,
 		pages: ['<p class = "consent_prose"><b>WORD RECOGNITION TEST</b></p>' +  '<p class = "instructions"> This test consists of about 60 trials, in each of which you will see a string of letters. Your task is to decide whether this is an existing English word or not. If you think it is an existing English word, you click on "yes", and if you think it is not an existing English word, you click on "no".',
@@ -46,7 +48,7 @@
 		show_clickable_nav: true
 	};
 
-	 //timeline.push(instructions_lextale);
+	timeline.push(instructions_lextale);
 
 	var pre_lextale = {
 		type: jsPsychHtmlButtonResponse,
@@ -56,6 +58,7 @@
 
 	 timeline.push(pre_lextale);
 
+	// you could remove this since the lextale_stimuli.js has the trial info embedded, would need to modify the if statement to access that structure instead. 
 	var lx_trials = 0;
 
 	// This is a very close simulation of the look and feel of the  LexTALE test on www.lextale.com. 
